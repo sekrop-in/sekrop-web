@@ -1,0 +1,237 @@
+/* Home page specific styles */
+.gradient-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(44, 85, 48, 0.2), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(43, 24, 16, 0.15), transparent 40%),
+        var(--dark-bg);
+    opacity: 1;
+    z-index: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 4rem;
+}
+
+.brand-container {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.multi-language-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.typing-text {
+    font-size: 6rem;
+    font-weight: 600;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.85) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 30px rgba(255, 255, 255, 0.15);
+    letter-spacing: -0.02em;
+}
+
+.brand-by-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: -0.5rem;
+}
+
+.brand-by {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.02em;
+}
+
+.brand-company {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.75rem;
+    font-weight: 500;
+    background: linear-gradient(to right, 
+        rgba(167, 201, 87, 1) 0%,
+        rgba(255, 255, 255, 0.95) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.01em;
+}
+
+.tagline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 4rem;
+    font-weight: 200;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.85) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    max-width: 800px;
+}
+
+.features {
+    display: flex;
+    gap: 2rem;
+    margin: 3rem 0;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 3rem;
+}
+
+.feature {
+    background: rgba(19, 43, 28, 0.6);
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    width: calc(33.33% - 1.33rem);
+    border: 1px solid rgba(167, 201, 87, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.feature:hover {
+    background: rgba(19, 43, 28, 0.8);
+    border-color: rgba(167, 201, 87, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1rem 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    background: linear-gradient(135deg, var(--accent-green), var(--dark-surface));
+    border: 1px solid rgba(167, 201, 87, 0.2);
+    padding: 0.8rem 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.social-links {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkedin {
+    background: rgba(19, 43, 28, 0.6);
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(167, 201, 87, 0.1);
+}
+
+.linkedin:hover {
+    background: rgba(19, 43, 28, 0.8);
+    border-color: rgba(167, 201, 87, 0.2);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-top: 2rem;
+    }
+
+    .multi-language-brand {
+        height: 100px;
+    }
+
+    .typing-text {
+        font-size: 4rem;
+    }
+
+    .brand-by {
+        font-size: 1.4rem;
+    }
+
+    .brand-company {
+        font-size: 2.25rem;
+    }
+
+    .tagline {
+        font-size: 3rem;
+        padding: 0 1.5rem;
+    }
+    
+    .features {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .feature {
+        width: 100%;
+        max-width: 300px;
+        padding: 1.5rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .button {
+        width: 100%;
+        justify-content: center;
+    }
+} 

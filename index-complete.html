@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavach - AI Shield for Fields</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=Noto+Sans+Devanagari:wght@400;500&family=Noto+Sans+Gurmukhi:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --dark-bg: #0A1F13;
+            --dark-surface: #132B1C;
+            --accent-green: #2c5530;
+            --light-green: #a7c957;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(44, 85, 48, 0.2), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(43, 24, 16, 0.15), transparent 40%),
+                var(--dark-bg);
+            opacity: 1;
+            z-index: 0;
+        }
+
+        .header {
+            padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .logo {
+            width: 180px;
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding-top: 4rem;
+        }
+
+        .brand-container {
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .multi-language-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 140px;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .typing-text {
+            font-size: 6rem;
+            font-weight: 600;
+            background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 255, 255, 0.85) 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 30px rgba(255, 255, 255, 0.15);
+            letter-spacing: -0.02em;
+        }
+
+        .brand-by-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: -0.5rem;
+        }
+
+        .brand-by {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.02em;
+        }
+
+        .brand-company {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 500;
+            background: linear-gradient(to right, 
+                rgba(167, 201, 87, 1) 0%,
+                rgba(255, 255, 255, 0.95) 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.01em;
+        }
+
+        .tagline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 4rem;
+            font-weight: 200;
+            line-height: 1.1;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 255, 255, 0.85) 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            max-width: 800px;
+        }
+
+        .features {
+            display: flex;
+            gap: 2rem;
+            margin: 3rem 0;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 3rem;
+        }
+
+        .feature {
+            background: rgba(19, 43, 28, 0.6);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            width: calc(33.33% - 1.33rem);
+            border: 1px solid rgba(167, 201, 87, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            background: rgba(19, 43, 28, 0.8);
+            border-color: rgba(167, 201, 87, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .feature h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1rem 0;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            background: linear-gradient(135deg, var(--accent-green), var(--dark-surface));
+            border: 1px solid rgba(167, 201, 87, 0.2);
+            padding: 0.8rem 1.5rem;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .linkedin {
+            background: rgba(19, 43, 28, 0.6);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(167, 201, 87, 0.1);
+        }
+
+        .linkedin:hover {
+            background: rgba(19, 43, 28, 0.8);
+            border-color: rgba(167, 201, 87, 0.2);
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                width: 140px;
+            }
+
+            .container {
+                padding-top: 2rem;
+            }
+
+            .multi-language-brand {
+                height: 100px;
+            }
+
+            .typing-text {
+                font-size: 4rem;
+            }
+
+            .brand-by {
+                font-size: 1.4rem;
+            }
+
+            .brand-company {
+                font-size: 2.25rem;
+            }
+
+            .tagline {
+                font-size: 3rem;
+                padding: 0 1.5rem;
+            }
+
+            .features {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .feature {
+                width: 100%;
+                max-width: 300px;
+                padding: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    
+    <header class="header">
+        <a href="index.html" class="logo-link">
+            <img src="assets/images/logo.png" alt="Kavach Logo" class="logo">
+        </a>
+    </header>
+
+    <main class="container">
+        <div class="brand-container">
+            <div class="multi-language-brand">
+                <div class="typing-text"></div>
+            </div>
+            <div class="brand-by-container">
+                <span class="brand-by">by</span>
+                <span class="brand-company">Sekrop</span>
+            </div>
+            <p class="tagline">AI Shield for Fields</p>
+        </div>
+
+        <section class="features">
+            <div class="feature">
+                <h3>Real-time Detection</h3>
+                <p>Instant identification of threats using advanced AI algorithms</p>
+            </div>
+            <div class="feature">
+                <h3>Smart Alerts</h3>
+                <p>Immediate notifications when potential threats are detected</p>
+            </div>
+            <div class="feature">
+                <h3>24/7 Protection</h3>
+                <p>Continuous monitoring and protection of your fields</p>
+            </div>
+        </section>
+
+        <div class="cta-buttons">
+            <a href="demo.html" class="button primary">Watch Demo</a>
+            <a href="#" class="button secondary" onclick="showEmail(event)">Try Kavach</a>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/company/sekrop" target="_blank" class="linkedin">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Email function
+        function showEmail(event) {
+            event.preventDefault();
+            window.location.href = 'mailto:hello@sekrop.com';
+        }
+
+        // Typing animation
+        const texts = [
+            { text: 'kavach', font: "'Space Grotesk', sans-serif" },
+            { text: 'कवच', font: "'Noto Sans Devanagari', sans-serif" },
+            { text: 'ਕਵਚ', font: "'Noto Sans Gurmukhi', sans-serif" }
+        ];
+
+        const typingText = document.querySelector('.typing-text');
+        let currentTextIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 150;
+        let pauseTime = 2000;
+
+        function type() {
+            const current = texts[currentTextIndex];
+            typingText.style.fontFamily = current.font;
+
+            if (!isDeleting) {
+                typingText.textContent = current.text.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+
+                if (currentCharIndex === current.text.length) {
+                    isDeleting = true;
+                    typingSpeed = 100;
+                    setTimeout(type, pauseTime);
+                    return;
+                }
+            } else {
+                typingText.textContent = current.text.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+
+                if (currentCharIndex === 0) {
+                    isDeleting = false;
+                    currentTextIndex = (currentTextIndex + 1) % texts.length;
+                    typingSpeed = 150;
+                    setTimeout(type, 500);
+                    return;
+                }
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        // Start typing animation after a delay
+        setTimeout(type, 1000);
+    </script>
+</body>
+</html> 
